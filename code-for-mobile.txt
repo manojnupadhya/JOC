@@ -1,0 +1,955 @@
+ADVANCED PEER RECOGNITION DASHBOARD - COMPLETE HTML CODE
+=========================================================
+
+Copy everything below this line:
+-----------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Peer Recognition Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .nav-tabs {
+            background: #f8fafc;
+            padding: 0 30px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            gap: 0;
+        }
+
+        .nav-tab {
+            padding: 15px 25px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .nav-tab.active {
+            color: #4f46e5;
+            border-bottom-color: #4f46e5;
+            background: white;
+        }
+
+        .nav-tab:hover {
+            color: #4f46e5;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .controls {
+            background: #f8fafc;
+            padding: 20px 30px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .quarter-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .quarter-btn {
+            padding: 10px 20px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .quarter-btn.active {
+            background: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+
+        .quarter-btn:hover {
+            border-color: #4f46e5;
+            transform: translateY(-2px);
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+
+        .filter-select {
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8fafc;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4f46e5;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .employees-grid {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .employee-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .employee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .employee-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        }
+
+        .employee-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .employee-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .employee-info h3 {
+            font-size: 1.3rem;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .employee-id {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-family: monospace;
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .employee-details {
+            margin-top: 15px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .detail-label {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .recognition-count {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .achievements {
+            margin-top: 15px;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 2px 2px 2px 0;
+        }
+
+        .department-tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .quarter-tag {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .charts-container {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .chart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .bar-chart {
+            height: 300px;
+            display: flex;
+            align-items: end;
+            gap: 10px;
+            padding: 20px 0;
+        }
+
+        .bar {
+            flex: 1;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            min-height: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #64748b;
+            white-space: nowrap;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .quarter-info {
+            background: white;
+            margin: 20px 30px;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4f46e5;
+        }
+
+        .quarter-info h2 {
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .quarter-info p {
+            color: #64748b;
+        }
+
+        .department-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .dept-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .dept-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .dept-count {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4f46e5;
+            margin-bottom: 5px;
+        }
+
+        .dept-label {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .quarter-selector {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .employees-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .charts-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .nav-tabs {
+                overflow-x: auto;
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏆 Advanced Peer Recognition Dashboard</h1>
+            <p>Comprehensive employee recognition analytics and insights</p>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="dashboard">Dashboard</button>
+            <button class="nav-tab" data-tab="employees">Employees</button>
+            <button class="nav-tab" data-tab="departments">Departments</button>
+            <button class="nav-tab" data-tab="analytics">Analytics</button>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div class="tab-content active" id="dashboard">
+            <div class="controls">
+                <div class="quarter-selector">
+                    <button class="quarter-btn active" data-quarter="all">All Quarters</button>
+                    <button class="quarter-btn" data-quarter="Q1">Q1 2024</button>
+                    <button class="quarter-btn" data-quarter="Q2">Q2 2024</button>
+                    <button class="quarter-btn" data-quarter="Q3">Q3 2024</button>
+                    <button class="quarter-btn" data-quarter="Q4">Q4 2024</button>
+                </div>
+            </div>
+
+            <div class="quarter-info" id="quarterInfo">
+                <h2>All Quarters Overview</h2>
+                <p>Displaying recognition data for all quarters of 2024. Use the quarter filters to view specific periods.</p>
+            </div>
+
+            <div class="stats" id="statsContainer">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalEmployees">0</div>
+                    <div class="stat-label">Total Employees</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalDepartments">0</div>
+                    <div class="stat-label">Departments</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalRecognitions">0</div>
+                    <div class="stat-label">Total Recognitions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avgRecognitions">0</div>
+                    <div class="stat-label">Avg Recognitions</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Employees Tab -->
+        <div class="tab-content" id="employees">
+            <div class="controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search employees...">
+                </div>
+                <select class="filter-select" id="departmentFilter">
+                    <option value="">All Departments</option>
+                </select>
+                <select class="filter-select" id="quarterFilter">
+                    <option value="">All Quarters</option>
+                    <option value="Q1">Q1 2024</option>
+                    <option value="Q2">Q2 2024</option>
+                    <option value="Q3">Q3 2024</option>
+                    <option value="Q4">Q4 2024</option>
+                </select>
+            </div>
+
+            <div class="employees-grid" id="employeesContainer">
+                <!-- Employee cards will be dynamically generated here -->
+            </div>
+        </div>
+
+        <!-- Departments Tab -->
+        <div class="tab-content" id="departments">
+            <div class="department-stats" id="departmentStats">
+                <!-- Department statistics will be generated here -->
+            </div>
+        </div>
+
+        <!-- Analytics Tab -->
+        <div class="tab-content" id="analytics">
+            <div class="charts-container">
+                <div class="chart-card">
+                    <div class="chart-title">Recognitions by Quarter</div>
+                    <div class="bar-chart" id="quarterChart"></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">Top Performing Departments</div>
+                    <div class="bar-chart" id="departmentChart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample employee data
+        const employeeData = [
+            {
+                id: "EMP001", name: "Alice Johnson", designation: "Senior Software Engineer",
+                department: "Engineering", quarter: "Q1", recognitions: 5,
+                achievements: ["Code Quality Award", "Team Player"], joinDate: "2023-01-15",
+                email: "alice.johnson@company.com"
+            },
+            {
+                id: "EMP002", name: "Bob Smith", designation: "Product Manager",
+                department: "Product", quarter: "Q1", recognitions: 3,
+                achievements: ["Innovation Award"], joinDate: "2022-08-20",
+                email: "bob.smith@company.com"
+            },
+            {
+                id: "EMP003", name: "Carol Williams", designation: "UX Designer",
+                department: "Design", quarter: "Q1", recognitions: 4,
+                achievements: ["Design Excellence"], joinDate: "2023-03-10",
+                email: "carol.williams@company.com"
+            },
+            {
+                id: "EMP004", name: "David Brown", designation: "DevOps Engineer",
+                department: "Engineering", quarter: "Q2", recognitions: 6,
+                achievements: ["Infrastructure Hero", "Performance Optimizer"], joinDate: "2022-11-05",
+                email: "david.brown@company.com"
+            },
+            {
+                id: "EMP005", name: "Emma Davis", designation: "Marketing Manager",
+                department: "Marketing", quarter: "Q2", recognitions: 4,
+                achievements: ["Campaign Excellence"], joinDate: "2023-02-28",
+                email: "emma.davis@company.com"
+            },
+            {
+                id: "EMP006", name: "Frank Wilson", designation: "Data Scientist",
+                department: "Analytics", quarter: "Q2", recognitions: 7,
+                achievements: ["Data Insights Master", "ML Innovation"], joinDate: "2022-09-12",
+                email: "frank.wilson@company.com"
+            },
+            {
+                id: "EMP007", name: "Grace Miller", designation: "HR Specialist",
+                department: "Human Resources", quarter: "Q3", recognitions: 3,
+                achievements: ["Employee Engagement"], joinDate: "2023-01-20",
+                email: "grace.miller@company.com"
+            },
+            {
+                id: "EMP008", name: "Henry Taylor", designation: "Frontend Developer",
+                department: "Engineering", quarter: "Q3", recognitions: 5,
+                achievements: ["UI/UX Excellence", "Performance Optimization"], joinDate: "2023-04-15",
+                email: "henry.taylor@company.com"
+            },
+            {
+                id: "EMP009", name: "Ivy Anderson", designation: "Sales Director",
+                department: "Sales", quarter: "Q3", recognitions: 8,
+                achievements: ["Top Performer", "Client Relations", "Revenue Growth"], joinDate: "2022-06-30",
+                email: "ivy.anderson@company.com"
+            },
+            {
+                id: "EMP010", name: "Jack Thomas", designation: "QA Engineer",
+                department: "Quality Assurance", quarter: "Q4", recognitions: 4,
+                achievements: ["Bug Hunter", "Testing Excellence"], joinDate: "2023-05-08",
+                email: "jack.thomas@company.com"
+            },
+            {
+                id: "EMP011", name: "Kelly Jackson", designation: "Content Manager",
+                department: "Marketing", quarter: "Q4", recognitions: 3,
+                achievements: ["Content Strategy"], joinDate: "2023-03-25",
+                email: "kelly.jackson@company.com"
+            },
+            {
+                id: "EMP012", name: "Leo White", designation: "Backend Developer",
+                department: "Engineering", quarter: "Q4", recognitions: 6,
+                achievements: ["API Design Master", "Scalability Expert"], joinDate: "2022-10-18",
+                email: "leo.white@company.com"
+            },
+            {
+                id: "EMP013", name: "Mia Harris", designation: "Business Analyst",
+                department: "Operations", quarter: "Q1", recognitions: 4,
+                achievements: ["Process Improvement"], joinDate: "2023-01-03",
+                email: "mia.harris@company.com"
+            },
+            {
+                id: "EMP014", name: "Noah Martin", designation: "Security Engineer",
+                department: "Security", quarter: "Q2", recognitions: 5,
+                achievements: ["Security Champion", "Vulnerability Detection"], joinDate: "2022-12-01",
+                email: "noah.martin@company.com"
+            },
+            {
+                id: "EMP015", name: "Olivia Garcia", designation: "Finance Manager",
+                department: "Finance", quarter: "Q3", recognitions: 3,
+                achievements: ["Budget Optimization"], joinDate: "2023-02-14",
+                email: "olivia.garcia@company.com"
+            }
+        ];
+
+        let currentQuarterFilter = 'all';
+        let filteredData = [...employeeData];
+
+        // Initialize the dashboard
+        function initDashboard() {
+            setupEventListeners();
+            populateDepartmentFilter();
+            renderEmployees(employeeData);
+            updateStats(employeeData);
+            renderDepartmentStats();
+            renderAnalytics();
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Tab navigation
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    navTabs.forEach(t => t.classList.remove('active'));
+                    e.target.classList.add('active');
+                    
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(e.target.dataset.tab).classList.add('active');
+                });
+            });
+
+            // Quarter filter buttons
+            const quarterBtns = document.querySelectorAll('.quarter-btn');
+            quarterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    quarterBtns.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentQuarterFilter = e.target.dataset.quarter;
+                    updateStats(getFilteredData(currentQuarterFilter));
+                    updateQuarterInfo(currentQuarterFilter);
+                    renderAnalytics();
+                });
+            });
+
+            // Search and filters
+            document.getElementById('searchInput').addEventListener('input', filterEmployees);
+            document.getElementById('departmentFilter').addEventListener('change', filterEmployees);
+            document.getElementById('quarterFilter').addEventListener('change', filterEmployees);
+        }
+
+        // Populate department filter
+        function populateDepartmentFilter() {
+            const departments = [...new Set(employeeData.map(emp => emp.department))].sort();
+            const select = document.getElementById('departmentFilter');
+            departments.forEach(dept => {
+                const option = document.createElement('option');
+                option.value = dept;
+                option.textContent = dept;
+                select.appendChild(option);
+            });
+        }
+
+        // Filter employees based on current filters
+        function filterEmployees() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const deptFilter = document.getElementById('departmentFilter').value;
+            const quarterFilter = document.getElementById('quarterFilter').value;
+            
+            filteredData = employeeData.filter(employee => {
+                const matchesSearch = 
+                    employee.name.toLowerCase().includes(searchTerm) ||
+                    employee.id.toLowerCase().includes(searchTerm) ||
+                    employee.designation.toLowerCase().includes(searchTerm) ||
+                    employee.department.toLowerCase().includes(searchTerm);
+                
+                const matchesDept = !deptFilter || employee.department === deptFilter;
+                const matchesQuarter = !quarterFilter || employee.quarter === quarterFilter;
+                
+                return matchesSearch && matchesDept && matchesQuarter;
+            });
+
+            renderEmployees(filteredData);
+        }
+
+        // Get filtered data by quarter
+        function getFilteredData(quarter) {
+            if (quarter === 'all') return employeeData;
+            return employeeData.filter(emp => emp.quarter === quarter);
+        }
+
+        // Render employee cards
+        function renderEmployees(employees) {
+            const container = document.getElementById('employeesContainer');
+            
+            if (employees.length === 0) {
+                container.innerHTML = '<div class="no-results">No employees found matching your criteria.</div>';
+                return;
+            }
+
+            container.innerHTML = employees.map(employee => `
+                <div class="employee-card">
+                    <div class="employee-header">
+                        <div class="employee-avatar">
+                            ${employee.name.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <div class="employee-info">
+                            <h3>${employee.name}</h3>
+                            <div class="employee-id">${employee.id}</div>
+                        </div>
+                    </div>
+                    <div class="employee-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Designation:</span>
+                            <span class="detail-value">${employee.designation}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Department:</span>
+                            <span class="detail-value">
+                                <span class="department-tag">${employee.department}</span>
+                            </span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Quarter:</span>
+                            <span class="detail-value">
+                                <span class="quarter-tag">${employee.quarter}</span>
+                            </span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Recognitions:</span>
+                            <span class="detail-value">
+                                <span class="recognition-count">🏆 ${employee.recognitions}</span>
+                            </span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Join Date:</span>
+                            <span class="detail-value">${new Date(employee.joinDate).toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                    <div class="achievements">
+                        ${employee.achievements.map(achievement => `<span class="achievement-badge">${achievement}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Update statistics
+        function updateStats(employees) {
+            const totalEmployees = employees.length;
+            const totalDepartments = new Set(employees.map(emp => emp.department)).size;
+            const totalRecognitions = employees.reduce((sum, emp) => sum + emp.recognitions, 0);
+            const avgRecognitions = totalEmployees > 0 ? (totalRecognitions / totalEmployees).toFixed(1) : 0;
+            
+            document.getElementById('totalEmployees').textContent = totalEmployees;
+            document.getElementById('totalDepartments').textContent = totalDepartments;
+            document.getElementById('totalRecognitions').textContent = totalRecognitions;
+            document.getElementById('avgRecognitions').textContent = avgRecognitions;
+        }
+
+        // Render department statistics
+        function renderDepartmentStats() {
+            const deptStats = {};
+            employeeData.forEach(emp => {
+                if (!deptStats[emp.department]) {
+                    deptStats[emp.department] = { count: 0, recognitions: 0 };
+                }
+                deptStats[emp.department].count++;
+                deptStats[emp.department].recognitions += emp.recognitions;
+            });
+
+            const container = document.getElementById('departmentStats');
+            container.innerHTML = Object.entries(deptStats).map(([dept, stats]) => `
+                <div class="dept-card">
+                    <div class="dept-name">${dept}</div>
+                    <div class="dept-count">${stats.count}</div>
+                    <div class="dept-label">Employees</div>
+                    <div style="margin-top: 10px;">
+                        <div style="color: #4f46e5; font-weight: 600;">${stats.recognitions} Recognitions</div>
+                        <div style="color: #64748b; font-size: 0.9rem;">Avg: ${(stats.recognitions / stats.count).toFixed(1)}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render analytics charts
+        function renderAnalytics() {
+            const data = getFilteredData(currentQuarterFilter);
+            
+            // Quarter chart
+            const quarterStats = {};
+            ['Q1', 'Q2', 'Q3', 'Q4'].forEach(q => {
+                quarterStats[q] = employeeData.filter(emp => emp.quarter === q)
+                    .reduce((sum, emp) => sum + emp.recognitions, 0);
+            });
+
+            renderBarChart('quarterChart', quarterStats);
+
+            // Department chart
+            const deptStats = {};
+            data.forEach(emp => {
+                if (!deptStats[emp.department]) deptStats[emp.department] = 0;
+                deptStats[emp.department] += emp.recognitions;
+            });
+
+            const topDepts = Object.entries(deptStats)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 5)
+                .reduce((obj, [dept, count]) => ({ ...obj, [dept]: count }), {});
+
+            renderBarChart('departmentChart', topDepts);
+        }
+
+        // Render bar chart
+        function renderBarChart(containerId, data) {
+            const container = document.getElementById(containerId);
+            const maxValue = Math.max(...Object.values(data));
+            
+            container.innerHTML = Object.entries(data).map(([label, value]) => `
+                <div class="bar" style="height: ${(value / maxValue) * 100}%">
+                    <div class="bar-value">${value}</div>
+                    <div class="bar-label">${label}</div>
+                </div>
+            `).join('');
+        }
+
+        // Update quarter information
+        function updateQuarterInfo(quarter) {
+            const quarterInfo = document.getElementById('quarterInfo');
+            const quarterDescriptions = {
+                'all': {
+                    title: 'All Quarters Overview',
+                    description: 'Displaying recognition data for all quarters of 2024. Use the quarter filters to view specific periods.'
+                },
+                'Q1': {
+                    title: 'Q1 2024 Recognition',
+                    description: 'January - March 2024: Focus on foundation building and team establishment.'
+                },
+                'Q2': {
+                    title: 'Q2 2024 Recognition',
+                    description: 'April - June 2024: Growth phase with increased productivity and innovation.'
+                },
+                'Q3': {
+                    title: 'Q3 2024 Recognition',
+                    description: 'July - September 2024: Peak performance period with major project deliveries.'
+                },
+                'Q4': {
+                    title: 'Q4 2024 Recognition',
+                    description: 'October - December 2024: Year-end achievements and strategic planning.'
+                }
+            };
+
+            const info = quarterDescriptions[quarter];
+            quarterInfo.innerHTML = `
+                <h2>${info.title}</h2>
+                <p>${info.description}</p>
+            `;
+        }
+
+        // Initialize the dashboard when the page loads
+        document.addEventListener('DOMContentLoaded', initDashboard);
+    </script>
+</body>
+</html>
+
+-----------------------------------
+Copy everything above this line!
+
+INSTRUCTIONS FOR MOBILE:
+1. Access this file on your phone: http://172.30.0.2:8080/code-for-mobile.txt
+2. Long press to select all text
+3. Copy the entire code
+4. Paste it into a text editor or HTML file
+5. Save as "dashboard.html" and open in browser
+
+OR
+
+Email this code-for-mobile.txt file to yourself and download on mobile!
