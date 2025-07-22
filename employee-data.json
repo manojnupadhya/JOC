@@ -1,0 +1,208 @@
+{
+  "employees": [
+    {
+      "id": "EMP001",
+      "name": "Alice Johnson",
+      "designation": "Senior Software Engineer",
+      "department": "Engineering",
+      "quarter": "Q1",
+      "recognitions": 5,
+      "achievements": ["Code Quality Award", "Team Player"],
+      "joinDate": "2023-01-15",
+      "email": "alice.johnson@company.com"
+    },
+    {
+      "id": "EMP002",
+      "name": "Bob Smith",
+      "designation": "Product Manager",
+      "department": "Product",
+      "quarter": "Q1",
+      "recognitions": 3,
+      "achievements": ["Innovation Award"],
+      "joinDate": "2022-08-20",
+      "email": "bob.smith@company.com"
+    },
+    {
+      "id": "EMP003",
+      "name": "Carol Williams",
+      "designation": "UX Designer",
+      "department": "Design",
+      "quarter": "Q1",
+      "recognitions": 4,
+      "achievements": ["Design Excellence"],
+      "joinDate": "2023-03-10",
+      "email": "carol.williams@company.com"
+    },
+    {
+      "id": "EMP004",
+      "name": "David Brown",
+      "designation": "DevOps Engineer",
+      "department": "Engineering",
+      "quarter": "Q2",
+      "recognitions": 6,
+      "achievements": ["Infrastructure Hero", "Performance Optimizer"],
+      "joinDate": "2022-11-05",
+      "email": "david.brown@company.com"
+    },
+    {
+      "id": "EMP005",
+      "name": "Emma Davis",
+      "designation": "Marketing Manager",
+      "department": "Marketing",
+      "quarter": "Q2",
+      "recognitions": 4,
+      "achievements": ["Campaign Excellence"],
+      "joinDate": "2023-02-28",
+      "email": "emma.davis@company.com"
+    },
+    {
+      "id": "EMP006",
+      "name": "Frank Wilson",
+      "designation": "Data Scientist",
+      "department": "Analytics",
+      "quarter": "Q2",
+      "recognitions": 7,
+      "achievements": ["Data Insights Master", "ML Innovation"],
+      "joinDate": "2022-09-12",
+      "email": "frank.wilson@company.com"
+    },
+    {
+      "id": "EMP007",
+      "name": "Grace Miller",
+      "designation": "HR Specialist",
+      "department": "Human Resources",
+      "quarter": "Q3",
+      "recognitions": 3,
+      "achievements": ["Employee Engagement"],
+      "joinDate": "2023-01-20",
+      "email": "grace.miller@company.com"
+    },
+    {
+      "id": "EMP008",
+      "name": "Henry Taylor",
+      "designation": "Frontend Developer",
+      "department": "Engineering",
+      "quarter": "Q3",
+      "recognitions": 5,
+      "achievements": ["UI/UX Excellence", "Performance Optimization"],
+      "joinDate": "2023-04-15",
+      "email": "henry.taylor@company.com"
+    },
+    {
+      "id": "EMP009",
+      "name": "Ivy Anderson",
+      "designation": "Sales Director",
+      "department": "Sales",
+      "quarter": "Q3",
+      "recognitions": 8,
+      "achievements": ["Top Performer", "Client Relations", "Revenue Growth"],
+      "joinDate": "2022-06-30",
+      "email": "ivy.anderson@company.com"
+    },
+    {
+      "id": "EMP010",
+      "name": "Jack Thomas",
+      "designation": "QA Engineer",
+      "department": "Quality Assurance",
+      "quarter": "Q4",
+      "recognitions": 4,
+      "achievements": ["Bug Hunter", "Testing Excellence"],
+      "joinDate": "2023-05-08",
+      "email": "jack.thomas@company.com"
+    },
+    {
+      "id": "EMP011",
+      "name": "Kelly Jackson",
+      "designation": "Content Manager",
+      "department": "Marketing",
+      "quarter": "Q4",
+      "recognitions": 3,
+      "achievements": ["Content Strategy"],
+      "joinDate": "2023-03-25",
+      "email": "kelly.jackson@company.com"
+    },
+    {
+      "id": "EMP012",
+      "name": "Leo White",
+      "designation": "Backend Developer",
+      "department": "Engineering",
+      "quarter": "Q4",
+      "recognitions": 6,
+      "achievements": ["API Design Master", "Scalability Expert"],
+      "joinDate": "2022-10-18",
+      "email": "leo.white@company.com"
+    },
+    {
+      "id": "EMP013",
+      "name": "Mia Harris",
+      "designation": "Business Analyst",
+      "department": "Operations",
+      "quarter": "Q1",
+      "recognitions": 4,
+      "achievements": ["Process Improvement"],
+      "joinDate": "2023-01-03",
+      "email": "mia.harris@company.com"
+    },
+    {
+      "id": "EMP014",
+      "name": "Noah Martin",
+      "designation": "Security Engineer",
+      "department": "Security",
+      "quarter": "Q2",
+      "recognitions": 5,
+      "achievements": ["Security Champion", "Vulnerability Detection"],
+      "joinDate": "2022-12-01",
+      "email": "noah.martin@company.com"
+    },
+    {
+      "id": "EMP015",
+      "name": "Olivia Garcia",
+      "designation": "Finance Manager",
+      "department": "Finance",
+      "quarter": "Q3",
+      "recognitions": 3,
+      "achievements": ["Budget Optimization"],
+      "joinDate": "2023-02-14",
+      "email": "olivia.garcia@company.com"
+    }
+  ],
+  "quarters": {
+    "Q1": {
+      "name": "Q1 2024",
+      "period": "January - March 2024",
+      "description": "Focus on foundation building and team establishment",
+      "goals": ["Team building", "Process establishment", "Initial project delivery"]
+    },
+    "Q2": {
+      "name": "Q2 2024",
+      "period": "April - June 2024",
+      "description": "Growth phase with increased productivity and innovation",
+      "goals": ["Product development", "Innovation initiatives", "Customer satisfaction"]
+    },
+    "Q3": {
+      "name": "Q3 2024",
+      "period": "July - September 2024",
+      "description": "Peak performance period with major project deliveries",
+      "goals": ["Major releases", "Performance optimization", "Market expansion"]
+    },
+    "Q4": {
+      "name": "Q4 2024",
+      "period": "October - December 2024",
+      "description": "Year-end achievements and strategic planning",
+      "goals": ["Annual targets", "Strategic planning", "Year-end recognition"]
+    }
+  },
+  "departments": [
+    "Engineering",
+    "Product",
+    "Design",
+    "Marketing",
+    "Analytics",
+    "Human Resources",
+    "Sales",
+    "Quality Assurance",
+    "Operations",
+    "Security",
+    "Finance"
+  ]
+}
